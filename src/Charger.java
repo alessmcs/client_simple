@@ -13,6 +13,7 @@ public class Charger {
     private  ObjectOutputStream outputStream;
     private  ObjectInputStream inputStream;
     private  String commande;
+    private  String session;
 
     //    public Charger(ArrayList<Course> courseList) throws FileNotFoundException, IOException {
 //        this.listeCours = courseList;
@@ -21,7 +22,18 @@ public class Charger {
     public Charger(Socket s, String session) throws IOException, ClassNotFoundException {
         this.outputStream = new ObjectOutputStream(s.getOutputStream());
         this.inputStream = new ObjectInputStream(s.getInputStream());
+        this.session = session;
+        switch(session){
+            case "1":
+                this.session = "automne";
+            case "2":
+                this.session = "hiver";
+            case "3":
+                this.session = "ete";
+            default:
+        }
         this.commande = "CHARGER " + session;
+
     }
 
     // add a try/catch block here somewhere but for now you just wanna see that it runs
@@ -31,9 +43,10 @@ public class Charger {
         outputStream.flush();
         // recuperer l'info du serveur (liste de cours filtrée)
         ArrayList<Course> courseList = (ArrayList<Course>) inputStream.readObject();
-
+        // ADD NOM SESSION
         try {
             int i = 1;
+            System.out.println("Les cours offerts pourla session d'" + session.toLowerCase() + " sont:");
             // iterate through the course list
             for (Course c : courseList) {
                 System.out.println(i + ". " + c.getCode() + c.getName());

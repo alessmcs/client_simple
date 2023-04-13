@@ -19,20 +19,24 @@ public class Inscription implements Serializable {
     private Course course;
     private ArrayList<Course> courseList;
     private ArrayList<String> courseCodes;
+    private String commande;
 
     public Inscription( Socket s, ArrayList<Course> courseList ) throws IOException {
         this.s = s;
         this.courseList = courseList;
+        this.os = new ObjectOutputStream(s.getOutputStream());
         for (Course c : courseList){
             courseCodes.add(c.getCode());
         }
+        this.commande = "INSCRIRE ";
     }
 
-    public void register(Socket s) throws IOException {
-   // 1- The client creates a socket object and connects to the server's IP address and port number.
-          // create a constructor with the outputStream and the server defined in main
-           // Le client donne les informations pour le cours désiré
-           ObjectOutputStream os = new ObjectOutputStream(s.getOutputStream());
+    public void register(Socket s) throws Exception {
+        // Le client donne les informations pour le cours désiré
+
+        // d'abord, envoyer la requête "INSCRIRE" au serveur
+        os.writeObject(commande);
+        os.flush();
 
            Scanner scanner = new Scanner(System.in);
 
@@ -50,31 +54,22 @@ public class Inscription implements Serializable {
 
            System.out.println("Veuillez saisir le code du cours: ");
            String codeCours = scanner.nextLine();
-           if (courseCodes.contains(codeCours)){
-               // courseList has a list of objects, make the corresponding (index) element as a variable (type Course)
-               // that variable will become the course parameter that i'll send to registrationform, and with registrationform
-               // send the info to inscription.txt
+           // verification de l'entree de l'utilisateur
+           if (courseCodes.contains(codeCours)) {
+               int index = courseCodes.indexOf(codeCours);
+               this.course = courseList.get(index);
+               System.out.println("Félicitations! Inscription réussie de " + nom + " au cours " + codeCours); // si le cours est disponible, afficher directement le message
+           } else {
+               throw new Exception("Le cours fourni n'est pas disponible pour la session choisie. ");
            }
 
-
-           // use the info from charger
-           // create a main method & use the info given in charger to then use it as the course for inscription
-           // in the main method make a constructor for this???
-
-           // you need all the information to make course (session, name & code) to make the call work
            RegistrationForm form = new RegistrationForm(prenom, nom, email, matricule, course);
            os.writeObject(form);
-
            os.flush();
            os.close();
            scanner.close();
            s.close();
+    }
 
-           /* TODO
-                verify if the course given is in cours.txt (server-client interaction??)
-                make the server handle the request accordingly
-                write the file to inscription (in server) and then print the confirmation in client
-            */
-
-    }}
+}
 
