@@ -1,10 +1,12 @@
-package models;
+package main.models;
 
 import java.io.Serializable;
 
 public class Course implements Serializable {
+    @java.io.Serial
+    private static final long serialVersionUID = 23;
 
-    private static String name;
+    private String name;
     private String code;
     private String session;
 
@@ -14,7 +16,7 @@ public class Course implements Serializable {
         this.session = session;
     }
 
-    public static String getName() {
+    public String getName() {
         return name;
     }
 

@@ -1,4 +1,4 @@
-package models;
+package main.models;
 
 import java.io.Serializable;
 
@@ -7,9 +7,9 @@ public class RegistrationForm implements Serializable{
         private String nom;
         private String email;
         private String matricule;
-        private models.Course course;
+        private main.models.Course course;
 
-        public RegistrationForm(String prenom, String nom, String email, String matricule, models.Course course) {
+        public RegistrationForm(String prenom, String nom, String email, String matricule, main.models.Course course) {
             this.prenom = prenom;
             this.nom = nom;
             this.email = email;
@@ -49,11 +49,11 @@ public class RegistrationForm implements Serializable{
             this.matricule = matricule;
         }
 
-        public models.Course getCourse() {
+        public main.models.Course getCourse() {
             return course;
         }
 
-        public void setCourse(models.Course course) {
+        public void setCourse(main.models.Course course) {
             this.course = course;
         }
 
