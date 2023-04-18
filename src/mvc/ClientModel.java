@@ -28,10 +28,11 @@ public class ClientModel {
     }
 
     public void makeListeCours() throws Exception {
-        this.courseList = this.charger.loadCourses(); // bc loadCourses returns a courseList (PRINT IT IN THE VIEW AFTER)
+        this.courseList = this.charger.loadCourses(); // bc loadCourses returns a courseList
     }
-    public ArrayList<Course> getCourseList(){ return this.courseList;}
-
+    public ArrayList<Course> getCourseList(){
+        return this.courseList;
+    }
 //    main.Inscription inscription = new main.Inscription(PORT, listeCours);
 //    inscription.register();
     public void newInscription(int port, ArrayList<Course> courseList) throws IOException {

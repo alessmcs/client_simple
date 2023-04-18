@@ -39,12 +39,12 @@ public class ClientController {
                 throw new RuntimeException(e);
             }
         });
-
     }
 
     private void charger() throws Exception {
         this.modele.newCharger(port, selectedSemester);
         this.modele.makeListeCours();
+        this.vue.updateTable(modele.getCourseList()); // update the course table
     }
 
     public void inscrire() throws Exception {
