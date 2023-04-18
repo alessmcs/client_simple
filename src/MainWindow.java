@@ -1,5 +1,3 @@
-package mvc;
-
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
@@ -37,7 +35,7 @@ public class MainWindow extends Application {
     @Override
     public void start(Stage stage) {
 
-        Color bgColor = Color.LIGHTGRAY;
+        Color bgColor = Color.BEIGE;
 
         Scene scene = new Scene(new Group(), bgColor);
         stage.setTitle("Inscription UdeM");
@@ -53,24 +51,24 @@ public class MainWindow extends Application {
         TableColumn classCol = new TableColumn("Cours");
 
         table.getColumns().addAll(classCol, codeCol);
-        table.setPrefSize(250, 320); // Définir la taille de la table en 250px * 200px
-
+        table.setPrefSize(250, 320);
         ComboBox<String> comboBox = new ComboBox<>();
         comboBox.getItems().addAll("Hiver", "Automne", "Été");
         comboBox.setValue("Hiver");
 
-        Button chargerButton = new Button("Charger");
+        Button chargerButton = new Button("charger");
+
 
         Separator vertical = new Separator();
-        vertical.setPrefHeight(10); // Définir la hauteur de la ligne à 20 pixels
-        vertical.setStyle("-fx-background-color: white;"); // Définir la couleur de fond de la ligne à blanc
+        vertical.setPrefHeight(10);
+        vertical.setStyle("-fx-background-color: white;");
         vertical.setOrientation(Orientation.VERTICAL);
         vertical.setValignment(VPos.CENTER);
 
         Separator horizontal = new Separator();
         horizontal.setMaxWidth(250);
         vertical.setPrefHeight(10);
-        horizontal.setStyle("-fx-background-color: white;"); // Définir la couleur de fond de la ligne à blanc
+        horizontal.setStyle("-fx-background-color: white;");
         horizontal.setOrientation(Orientation.HORIZONTAL);
 
 
@@ -86,11 +84,11 @@ public class MainWindow extends Application {
         hbox.setAlignment(Pos.CENTER);
         hbox.setSpacing(10);
         hbox.setPadding(new Insets(10));
-        hbox.getChildren().addAll(comboBox, chargerButton); // Ajouter le ComboBox et le bouton "Charger" dans le HBox
-        vbox.getChildren().addAll(listeCours, table, horizontal, hbox); // Ajouter le HBox dans le VBox
+        hbox.getChildren().addAll(comboBox, chargerButton);
+        vbox.getChildren().addAll(listeCours, table, horizontal, hbox);
 
         Label formulaireIns = new Label("Formulaire d'inscription");
-        formulaireIns.setFont(new Font("Arial", 20));
+        formulaireIns.setFont(new Font("Arial", 21));
 
         // Remplacez le HBox formHBox par un GridPane
         GridPane formGrid = new GridPane();
@@ -99,19 +97,19 @@ public class MainWindow extends Application {
         formGrid.setVgap(10);
         formGrid.setPadding(new Insets(20));
 
-        Label nomLabel = new Label("Nom:");
+        Label nomLabel = new Label("Nom");
         TextField nomTextField = new TextField();
         formGrid.addRow(0, nomLabel, nomTextField);
 
-        Label prenomLabel = new Label("Prénom:");
+        Label prenomLabel = new Label("Prénom");
         TextField prenomTextField = new TextField();
         formGrid.addRow(1, prenomLabel, prenomTextField);
 
-        Label emailLabel = new Label("Email:");
+        Label emailLabel = new Label("Email");
         TextField emailTextField = new TextField();
         formGrid.addRow(2, emailLabel, emailTextField);
 
-        Label matriculeLabel = new Label("Matricule :");
+        Label matriculeLabel = new Label("Matricule");
         TextField matriculeField = new TextField();
         formGrid.addRow(3, matriculeLabel, matriculeField);
 
