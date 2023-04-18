@@ -3,7 +3,6 @@ package mvc;
 import javafx.scene.control.TextField;
 import mvc.models.Course;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**

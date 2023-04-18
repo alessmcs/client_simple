@@ -38,7 +38,7 @@ public class ClientView extends Application {
     private TableColumn<Course, String> coursCol;
 
         public static void main(String[] args) {
-            launch(args);
+            Application.launch(args);
         }
 
         @Override

@@ -1,8 +1,8 @@
 package mvc;
-import javafx.scene.control.TextField;
 import mvc.clientClasses.*;
 import  mvc.models.*;
 
+import java.awt.*;
 import java.io.IOException;
 import  java.util.*;
 
@@ -11,10 +11,10 @@ public class ClientModel {
     private Charger charger;
     private Inscription inscription;
     private ArrayList<Course> courseList;
-    private TextField nom;
-    private TextField prenom;
-    private TextField email;
-    private TextField matricule;
+    private String nom;
+    private String prenom;
+    private String email;
+    private String matricule;
 
     // Ajouter les méthodes qui sont présentes dans Main.java du côté client pour répliquer la fonctionnalité.
 
