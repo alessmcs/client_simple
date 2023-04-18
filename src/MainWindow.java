@@ -1,5 +1,3 @@
-package mvc;
-
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
@@ -37,7 +35,7 @@ public class MainWindow extends Application {
     @Override
     public void start(Stage stage) {
 
-        Color bgColor = Color.LIGHTGRAY;
+        Color bgColor = Color.BEIGE;
 
 
 
@@ -61,7 +59,7 @@ public class MainWindow extends Application {
         comboBox.getItems().addAll("Hiver", "Automne", "Été");
         comboBox.setValue("Hiver");
 
-        Button chargerButton = new Button("Charger");
+        Button chargerButton = new Button("charger");
 
         // Création d'un Separator vertical
         Separator vertical = new Separator();
@@ -93,7 +91,7 @@ public class MainWindow extends Application {
         vbox.getChildren().addAll(listeCours, table, horizontal, hbox); // Ajouter le HBox dans le VBox
 
         Label formulaireIns = new Label("Formulaire d'inscription");
-        formulaireIns.setFont(new Font("Arial", 20));
+        formulaireIns.setFont(new Font("Arial", 21));
 
         // Remplacez le HBox formHBox par un GridPane
         GridPane formGrid = new GridPane();
@@ -102,19 +100,19 @@ public class MainWindow extends Application {
         formGrid.setVgap(10);
         formGrid.setPadding(new Insets(20));
 
-        Label nomLabel = new Label("Nom:");
+        Label nomLabel = new Label("Nom");
         TextField nomTextField = new TextField();
         formGrid.addRow(0, nomLabel, nomTextField);
 
-        Label prenomLabel = new Label("Prénom:");
+        Label prenomLabel = new Label("Prénom");
         TextField prenomTextField = new TextField();
         formGrid.addRow(1, prenomLabel, prenomTextField);
 
-        Label emailLabel = new Label("Email:");
+        Label emailLabel = new Label("Email");
         TextField emailTextField = new TextField();
         formGrid.addRow(2, emailLabel, emailTextField);
 
-        Label matriculeLabel = new Label("Matricule :");
+        Label matriculeLabel = new Label("Matricule");
         TextField matriculeField = new TextField();
         formGrid.addRow(3, matriculeLabel, matriculeField);
 
