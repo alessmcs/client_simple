@@ -1,3 +1,5 @@
+package mvc;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
@@ -21,7 +23,6 @@ import javafx.scene.shape.*;
 import javafx.scene.layout.GridPane;
 
 import javafx.scene.control.TextField;
-
 
 
 
