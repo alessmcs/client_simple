@@ -10,6 +10,10 @@ public class ClientModel {
     private Charger charger;
     private Inscription inscription;
     private ArrayList<Course> courseList;
+    private  String nom;
+    private String prenom;
+    private String email;
+    private String matricule;
 
     // Ajouter les méthodes qui sont présentes dans Main.java du côté client pour répliquer la fonctionnalité.
 
@@ -41,5 +45,9 @@ public class ClientModel {
 
     public void register() throws Exception {
         inscription.register();
+    }
+
+    public void nom(){
+        this.
     }
 }
