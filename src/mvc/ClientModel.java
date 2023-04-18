@@ -30,6 +30,7 @@ public class ClientModel {
     public void makeListeCours(){
         this.courseList = charger.loadCourses();
     }
+    public ArrayList<Course> getCourseList(){ return this.courseList;}
 
 //    main.Inscription inscription = new main.Inscription(PORT, listeCours);
 //    inscription.register();

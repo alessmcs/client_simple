@@ -20,6 +20,9 @@ import javafx.stage.Stage;
     public class ClientView extends Application {
 
         private TableView table = new TableView();
+        private Button boutonCharger;
+        private Button boutonInscrire;
+        private ComboBox<String> liste;
 
         public static void main(String[] args) {
             launch(args);
@@ -45,18 +48,18 @@ import javafx.stage.Stage;
 
             table.getColumns().addAll(classCol, codeCol);
             table.setPrefSize(250, 320);
-            ComboBox<String> liste = new ComboBox<>();
+            this.liste = new ComboBox<>();
             liste.getItems().addAll("Hiver", "Automne", "Été");
             liste.setValue("Hiver");
             // add a listener to the combo box to detect a change in the selected value
             // tie that instance to the controller class
             liste.valueProperty().addListener((obs, oldVal, newVal) -> {
                 ClientController controller = null;
-                controller.setSelectedSemester(newVal);
+                String sem = liste.getValue();
+                controller.setSelectedSemester(sem);
             });
 
-            Button chargerButton = new Button("charger");
-
+            this.boutonCharger = new Button("charger");
 
             Separator vertical = new Separator();
             vertical.setPrefHeight(10);
@@ -83,7 +86,7 @@ import javafx.stage.Stage;
             hbox.setAlignment(Pos.CENTER);
             hbox.setSpacing(10);
             hbox.setPadding(new Insets(10));
-            hbox.getChildren().addAll(liste, chargerButton);
+            hbox.getChildren().addAll(liste, boutonCharger);
             vbox.getChildren().addAll(listeCours, table, horizontal, hbox);
 
             Label formulaireIns = new Label("Formulaire d'inscription");
@@ -111,8 +114,8 @@ import javafx.stage.Stage;
             TextField matriculeField = new TextField();
             formGrid.addRow(3, matriculeLabel, matriculeField);
 
-            Button inscrireButton = new Button("envoyer");
-            formGrid.addRow(5, inscrireButton);
+            this.boutonInscrire = new Button("envoyer");
+            formGrid.addRow(5, boutonInscrire);
 
             VBox formVBox = new VBox();
             formVBox.setAlignment(Pos.CENTER);
@@ -130,5 +133,16 @@ import javafx.stage.Stage;
 
             stage.setScene(scene);
             stage.show();
+        }
+        public Button getBoutonCharger(){
+            return this.boutonCharger;
+        }
+
+        public Button getBoutonInscrire(){
+            return this.boutonInscrire;
+        }
+
+        public String getSem(){
+            return liste.getValue();
         }
     }

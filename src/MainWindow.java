@@ -88,7 +88,7 @@ public class MainWindow extends Application {
         vbox.getChildren().addAll(listeCours, table, horizontal, hbox);
 
         Label formulaireIns = new Label("Formulaire d'inscription");
-        formulaireIns.setFont(new Font("Arial", 21));
+        formulaireIns.setFont(new Font("Arial", 19));
 
         // Remplacez le HBox formHBox par un GridPane
         GridPane formGrid = new GridPane();
