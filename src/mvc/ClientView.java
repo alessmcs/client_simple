@@ -45,9 +45,15 @@ import javafx.stage.Stage;
 
             table.getColumns().addAll(classCol, codeCol);
             table.setPrefSize(250, 320);
-            ComboBox<String> comboBox = new ComboBox<>();
-            comboBox.getItems().addAll("Hiver", "Automne", "Été");
-            comboBox.setValue("Hiver");
+            ComboBox<String> liste = new ComboBox<>();
+            liste.getItems().addAll("Hiver", "Automne", "Été");
+            liste.setValue("Hiver");
+            // add a listener to the combo box to detect a change in the selected value
+            // tie that instance to the controller class
+            liste.valueProperty().addListener((obs, oldVal, newVal) -> {
+                ClientController controller = null;
+                controller.setSelectedSemester(newVal);
+            });
 
             Button chargerButton = new Button("charger");
 
@@ -77,13 +83,12 @@ import javafx.stage.Stage;
             hbox.setAlignment(Pos.CENTER);
             hbox.setSpacing(10);
             hbox.setPadding(new Insets(10));
-            hbox.getChildren().addAll(comboBox, chargerButton);
+            hbox.getChildren().addAll(liste, chargerButton);
             vbox.getChildren().addAll(listeCours, table, horizontal, hbox);
 
             Label formulaireIns = new Label("Formulaire d'inscription");
             formulaireIns.setFont(new Font("Arial", 21));
 
-            // Remplacez le HBox formHBox par un GridPane
             GridPane formGrid = new GridPane();
             formGrid.setAlignment(Pos.CENTER);
             formGrid.setHgap(10);
