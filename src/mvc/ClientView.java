@@ -24,6 +24,11 @@ import javafx.stage.Stage;
         private Button boutonInscrire;
         private ComboBox<String> liste;
 
+        private  String nom;
+        private String prenom;
+        private String email;
+        private String matricule;
+
         public static void main(String[] args) {
             launch(args);
         }
@@ -151,14 +156,14 @@ import javafx.stage.Stage;
         }
 
         public String getInputPrenom(){
-            return getInputPrenom().getText();
+            return InputPrenom().getText();
         }
 
         public String getInputEmail(){
-            return getInputEmail().getText();
+            return InputEmail().getText();
         }
 
         public String getInputMatricule(){
-            return getInputMatricule().getText();
+            return inputMatricule.getText();
         }
     }
