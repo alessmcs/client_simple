@@ -1,5 +1,6 @@
 package mvc;
 
+import javafx.scene.control.TextField;
 import mvc.models.Course;
 
 import java.io.IOException;
@@ -17,6 +18,10 @@ public class ClientController {
 
     private ArrayList<Course> courseList;
 
+    private String nom;
+    private String prenom;
+    private String email;
+    private String matricule;
 
     public ClientController(ClientModel m, ClientView v) {
         this.modele = m;
@@ -64,5 +69,13 @@ public class ClientController {
                 this.selectedSemester = "3";
             default:
         }
+    }
+
+    public void getCoordonnees(){
+        String nom = this.vue.getNom();
+        String prenom = this.vue.getPrenom();
+        String email = this.vue.getEmail();
+        String matricule = this.vue.getMatricule();
+
     }
 }

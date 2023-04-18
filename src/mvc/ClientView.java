@@ -28,8 +28,13 @@ public class ClientView extends Application {
         private Button boutonCharger;
         private Button boutonInscrire;
         private ComboBox<String> liste;
-        private TableColumn<Course, String> codeCol;
-        private TableColumn<Course, String> coursCol;
+
+        private TextField nom;
+        private TextField prenom;
+        private TextField email;
+        private TextField matricule;
+    private TableColumn<Course, String> codeCol;
+    private TableColumn<Course, String> coursCol;
 
         public static void main(String[] args) {
             launch(args);
@@ -49,7 +54,6 @@ public class ClientView extends Application {
             listeCours.setFont(new Font("Arial", 20));
 
             table.setEditable(true);
-
             this.codeCol = new TableColumn("Code");
             // codeCol.setCellValueFactory(new PropertyValueFactory<>("code"));
 
@@ -57,7 +61,6 @@ public class ClientView extends Application {
             // coursCol.setCellValueFactory(new PropertyValueFactory<>("name"));
 
             table.getColumns().addAll(coursCol, codeCol);
-
             table.setPrefSize(250, 320);
             this.liste = new ComboBox<>();
             liste.getItems().addAll("Hiver", "Automne", "Été");
@@ -110,20 +113,20 @@ public class ClientView extends Application {
             formGrid.setPadding(new Insets(20));
 
             Label nomLabel = new Label("Nom");
-            TextField nomTextField = new TextField();
-            formGrid.addRow(0, nomLabel, nomTextField);
+            this.nom = new TextField();
+            formGrid.addRow(0, nomLabel, nom);
 
             Label prenomLabel = new Label("Prénom");
-            TextField prenomTextField = new TextField();
-            formGrid.addRow(1, prenomLabel, prenomTextField);
+            this.prenom = new TextField();
+            formGrid.addRow(1, prenomLabel, prenom);
 
             Label emailLabel = new Label("Email");
-            TextField emailTextField = new TextField();
-            formGrid.addRow(2, emailLabel, emailTextField);
+            this.email = new TextField();
+            formGrid.addRow(2, emailLabel, email);
 
             Label matriculeLabel = new Label("Matricule");
-            TextField matriculeField = new TextField();
-            formGrid.addRow(3, matriculeLabel, matriculeField);
+            this.matricule = new TextField();
+            formGrid.addRow(3, matriculeLabel, matricule);
 
             this.boutonInscrire = new Button("envoyer");
             formGrid.addRow(5, boutonInscrire);
@@ -155,6 +158,22 @@ public class ClientView extends Application {
 
         public String getSem(){
             return liste.getValue();
+        }
+
+        public String getNom(){
+            return nom.getText();
+        }
+
+        public String getPrenom(){
+            return prenom.getText();
+        }
+
+        public String getEmail(){
+            return email.getText();
+        }
+
+        public String getMatricule(){
+            return matricule.getText();
         }
 
         public void updateTable(ArrayList<Course> courseList) { // updates the table based on the arraylist being given from models layer

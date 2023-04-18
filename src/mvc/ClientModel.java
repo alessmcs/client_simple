@@ -1,4 +1,5 @@
 package mvc;
+import javafx.scene.control.TextField;
 import mvc.clientClasses.*;
 import  mvc.models.*;
 
@@ -10,10 +11,10 @@ public class ClientModel {
     private Charger charger;
     private Inscription inscription;
     private ArrayList<Course> courseList;
-    private  String nom;
-    private String prenom;
-    private String email;
-    private String matricule;
+    private TextField nom;
+    private TextField prenom;
+    private TextField email;
+    private TextField matricule;
 
     // Ajouter les méthodes qui sont présentes dans Main.java du côté client pour répliquer la fonctionnalité.
 
@@ -32,11 +33,10 @@ public class ClientModel {
     }
 
     public void makeListeCours() throws Exception {
-        this.courseList = this.charger.loadCourses(); // bc loadCourses returns a courseList
+        this.courseList = this.charger.loadCourses(); // bc loadCourses returns a courseList (PRINT IT IN THE VIEW AFTER)
     }
-    public ArrayList<Course> getCourseList(){
-        return this.courseList;
-    }
+    public ArrayList<Course> getCourseList(){ return this.courseList;}
+
 //    main.Inscription inscription = new main.Inscription(PORT, listeCours);
 //    inscription.register();
     public void newInscription(int port, ArrayList<Course> courseList) throws IOException {
@@ -46,6 +46,5 @@ public class ClientModel {
     public void register() throws Exception {
         inscription.register();
     }
-
 
 }
