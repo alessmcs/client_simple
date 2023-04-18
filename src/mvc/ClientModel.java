@@ -27,8 +27,8 @@ public class ClientModel {
         this.charger = new Charger(port, selectedValue);
     }
 
-    public void makeListeCours(){
-        this.courseList = charger.loadCourses();
+    public void makeListeCours() throws Exception {
+        this.courseList = this.charger.loadCourses(); // bc loadCourses returns a courseList (PRINT IT IN THE VIEW AFTER)
     }
     public ArrayList<Course> getCourseList(){ return this.courseList;}
 

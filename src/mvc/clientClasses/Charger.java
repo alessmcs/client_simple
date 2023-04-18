@@ -50,7 +50,7 @@ public class Charger {
             default:
 
                 this.courseList = new ArrayList<>();
-                this.commande = "CHARGER " + session;
+                this.commande = "CHARGER " + session; // envoyer la requête "CHARGER (cmd) x (arg)" au serveur
 
                 outputStream = new ObjectOutputStream(s.getOutputStream());
                 outputStream.writeObject(commande);
@@ -71,10 +71,10 @@ public class Charger {
      *
      * @return la liste des cours pour une session donnée
      */
-    public ArrayList<Course> loadCourses(){
-        try {
+    public ArrayList<Course> loadCourses() throws Exception{
+
             ArrayList<String> obj = (ArrayList<String>) inputStream.readObject();
-            System.out.println(obj);
+
             for(String i : obj){
                 Course cours;
                 String varAssignments = i.substring(i.indexOf("{") + 1, i.indexOf("}"));
@@ -94,10 +94,7 @@ public class Charger {
                 cours = new Course(name, code, session);
                 this.courseList.add(cours);
             }
-        } catch (ClassNotFoundException | IOException | ClassCastException e ) {
-            System.out.println("Erreur lors du chargement des cours. " + e.getMessage());
-            e.printStackTrace();
-        } finally {
+
             if (inputStream != null) { // the inputstream could be null, poor deserialisation
                 try {
                     inputStream.close();
@@ -105,7 +102,6 @@ public class Charger {
                     e.printStackTrace();
                 }
             }
-        }
 
         switch (session) {
             case "1":
@@ -119,13 +115,6 @@ public class Charger {
                 break;
             default:
                 throw new IllegalArgumentException("Session invalide: " + session);
-        }
-        System.out.println("Les cours offerts pour la session d'" + nomSession + " sont:");
-        System.out.println(courseList);
-        int i = 1;
-        for (Course c : courseList) {
-            System.out.println(i + ". " + " " + c.getCode() + " " + c.getName());
-            i++;
         }
         return courseList;
     }

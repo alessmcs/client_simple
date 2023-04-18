@@ -71,7 +71,7 @@ public class Charger {
     public ArrayList<Course> loadCourses(){
         try {
             ArrayList<String> obj = (ArrayList<String>) inputStream.readObject();
-            System.out.println(obj);
+
             for(String i : obj){
                 Course cours;
                 String varAssignments = i.substring(i.indexOf("{") + 1, i.indexOf("}"));

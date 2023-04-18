@@ -40,8 +40,6 @@ public class ClientController {
             }
         });
 
-
-
     }
 
     private void charger() throws Exception {
