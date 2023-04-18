@@ -1,11 +1,14 @@
-package main;
+package mvc.clientClasses;
 
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import mvc.models.Course;
+import mvc.models.RegistrationForm;
 
-import main.models.RegistrationForm;
-import main.models.Course;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * La classe inscription permet au client de se connecter au serveur et lui envoyer l'information nécessaire pour
@@ -35,7 +38,7 @@ public class Inscription implements Serializable {
      * @param courseList
      * @throws IOException
      */
-    public Inscription( int port, ArrayList<Course> courseList ) throws IOException {
+    public Inscription(int port, ArrayList<Course> courseList ) throws IOException {
         try {
             this.s = new Socket("localhost", port);
         } catch (IOException e) {

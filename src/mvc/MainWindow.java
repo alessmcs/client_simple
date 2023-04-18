@@ -39,8 +39,6 @@ public class MainWindow extends Application {
 
         Color bgColor = Color.LIGHTGRAY;
 
-
-
         Scene scene = new Scene(new Group(), bgColor);
         stage.setTitle("Inscription UdeM");
         stage.setWidth(650);
@@ -63,7 +61,6 @@ public class MainWindow extends Application {
 
         Button chargerButton = new Button("Charger");
 
-        // Création d'un Separator vertical
         Separator vertical = new Separator();
         vertical.setPrefHeight(10); // Définir la hauteur de la ligne à 20 pixels
         vertical.setStyle("-fx-background-color: white;"); // Définir la couleur de fond de la ligne à blanc
