@@ -99,20 +99,20 @@ import javafx.stage.Stage;
             formGrid.setPadding(new Insets(20));
 
             Label nomLabel = new Label("Nom");
-            TextField nomTextField = new TextField();
-            formGrid.addRow(0, nomLabel, nomTextField);
+            TextField inputNom = new TextField();
+            formGrid.addRow(0, nomLabel, inputNom);
 
             Label prenomLabel = new Label("Prénom");
-            TextField prenomTextField = new TextField();
-            formGrid.addRow(1, prenomLabel, prenomTextField);
+            TextField inputPrenom = new TextField();
+            formGrid.addRow(1, prenomLabel, inputPrenom);
 
             Label emailLabel = new Label("Email");
-            TextField emailTextField = new TextField();
-            formGrid.addRow(2, emailLabel, emailTextField);
+            TextField inputEmail = new TextField();
+            formGrid.addRow(2, emailLabel, inputEmail);
 
             Label matriculeLabel = new Label("Matricule");
-            TextField matriculeField = new TextField();
-            formGrid.addRow(3, matriculeLabel, matriculeField);
+            TextField inputMatricule = new TextField();
+            formGrid.addRow(3, matriculeLabel, inputMatricule);
 
             this.boutonInscrire = new Button("envoyer");
             formGrid.addRow(5, boutonInscrire);
@@ -144,5 +144,21 @@ import javafx.stage.Stage;
 
         public String getSem(){
             return liste.getValue();
+        }
+
+        public String getInputNom(){
+            return inputNom.getText();
+        }
+
+        public String getInputPrenom(){
+            return getInputPrenom().getText();
+        }
+
+        public String getInputEmail(){
+            return getInputEmail().getText();
+        }
+
+        public String getInputMatricule(){
+            return getInputMatricule().getText();
         }
     }
