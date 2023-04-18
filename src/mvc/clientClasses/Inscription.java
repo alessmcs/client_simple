@@ -68,44 +68,44 @@ public class Inscription implements Serializable {
      *
      * @throws Exception
      */
-    public void register() throws Exception {
+    public void register(String prenom, String nom, String email, String matricule, String codeCours) throws Exception {
 
         // Le client donne les informations pour le cours désiré
-        try{
-           Scanner scanner = new Scanner(System.in);
+//        try{
+//           Scanner scanner = new Scanner(System.in);
+//
+//           System.out.println("Veuillez saisir votre prénom: ");
+//           String prenom = scanner.nextLine();
+//
+//           System.out.println("Veuillez saisir votre nom: ");
+//           String nom = scanner.nextLine();
+//
+//           System.out.println("Veuillez saisir votre email: ");
+//           String email = scanner.nextLine();
+//            try {
+//                String regexPattern = "[-A-Za-z0-9!#$%&'*+/=?^_`{|}~]+(?:\\.[-A-Za-z0-9!#$%&'*+/=?^_`{|}~]+)*@(?:[A-Za-z0-9](?:[-A-Za-z0-9]*[A-Za-z0-9])?\\.)+[A-Za-z0-9](?:[-A-Za-z0-9]*[A-Za-z0-9])?";
+//                if (!email.matches(regexPattern)) {
+//                    throw new Exception("Format de l'email invalide.");
+//                }
+//            } catch(Exception e){
+//                System.out.println("Error: " + e.getMessage());
+//                throw new Exception("Format de l'email invalide.");
+//            }
 
-           System.out.println("Veuillez saisir votre prénom: ");
-           String prenom = scanner.nextLine();
-
-           System.out.println("Veuillez saisir votre nom: ");
-           String nom = scanner.nextLine();
-
-           System.out.println("Veuillez saisir votre email: ");
-           String email = scanner.nextLine();
-            try {
-                String regexPattern = "[-A-Za-z0-9!#$%&'*+/=?^_`{|}~]+(?:\\.[-A-Za-z0-9!#$%&'*+/=?^_`{|}~]+)*@(?:[A-Za-z0-9](?:[-A-Za-z0-9]*[A-Za-z0-9])?\\.)+[A-Za-z0-9](?:[-A-Za-z0-9]*[A-Za-z0-9])?";
-                if (!email.matches(regexPattern)) {
-                    throw new Exception("Format de l'email invalide.");
-                }
-            } catch(Exception e){
-                System.out.println("Error: " + e.getMessage());
-                throw new Exception("Format de l'email invalide.");
-            }
-
-        System.out.println("Veuillez saisir votre matricule: ");
-           String matricule = scanner.nextLine();
-        try {
-            String regexPattern = "^[0-9]{8}$";
-            if (!matricule.matches(regexPattern)) {
-                throw new Exception("Format du matricule invalide.");
-            }
-        } catch(Exception e){
-            System.out.println("Error: " + e.getMessage());
-            throw new Exception("Format du matricule invalide.");
-        }
-
-           System.out.println("Veuillez saisir le code du cours: ");
-           String codeCours = scanner.nextLine();
+//        System.out.println("Veuillez saisir votre matricule: ");
+//           String matricule = scanner.nextLine();
+//        try {
+//            String regexPattern = "^[0-9]{8}$";
+//            if (!matricule.matches(regexPattern)) {
+//                throw new Exception("Format du matricule invalide.");
+//            }
+//        } catch(Exception e){
+//            System.out.println("Error: " + e.getMessage());
+//            throw new Exception("Format du matricule invalide.");
+//        }
+//
+//           System.out.println("Veuillez saisir le code du cours: ");
+//           String codeCours = scanner.nextLine();
 
            // verification du choix de cours
            if (courseCodes.contains(codeCours)) {
@@ -121,9 +121,7 @@ public class Inscription implements Serializable {
            outputStream.writeObject(form);
            outputStream.flush();
 
-    } catch(Exception e){
-            e.printStackTrace();
-        }
     }
-}
+    }
+
 

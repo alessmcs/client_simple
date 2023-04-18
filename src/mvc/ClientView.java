@@ -33,6 +33,7 @@ public class ClientView extends Application {
         private TextField prenom;
         private TextField email;
         private TextField matricule;
+        private ClientController controller;
     private TableColumn<Course, String> codeCol;
     private TableColumn<Course, String> coursCol;
 
@@ -55,20 +56,21 @@ public class ClientView extends Application {
 
             table.setEditable(true);
             this.codeCol = new TableColumn("Code");
-            // codeCol.setCellValueFactory(new PropertyValueFactory<>("code"));
-
             this.coursCol = new TableColumn("Cours");
-            // coursCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+            // Créer un listener pour identifier le cours choisi par l'utilisateur
+            table.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+                if (newValue != null) {
+                    controller.setCours(newValue);
+                }
+            });
 
             table.getColumns().addAll(coursCol, codeCol);
             table.setPrefSize(250, 320);
             this.liste = new ComboBox<>();
             liste.getItems().addAll("Hiver", "Automne", "Été");
             liste.setValue("Hiver");
-            // add a listener to the combo box to detect a change in the selected value
-            // tie that instance to the controller class
+            // Créer un listener pour indiquer la session choisie par l'utilisateur
             liste.valueProperty().addListener((obs, oldVal, newVal) -> {
-                ClientController controller = null;
                 String sem = liste.getValue();
                 controller.setSelectedSemester(sem);
             });

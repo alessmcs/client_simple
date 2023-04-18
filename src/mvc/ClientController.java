@@ -22,6 +22,7 @@ public class ClientController {
     private String prenom;
     private String email;
     private String matricule;
+    private Course cours;
 
     public ClientController(ClientModel m, ClientView v) {
         this.modele = m;
@@ -39,6 +40,7 @@ public class ClientController {
 
         this.vue.getBoutonInscrire().setOnAction((action)->{
             try {
+                this.setCoordonnees();
                 this.inscrire();
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -54,8 +56,8 @@ public class ClientController {
 
     public void inscrire() throws Exception {
         this.courseList = this.modele.getCourseList();
-        this.modele.newInscription(port,courseList);
-        this.modele.register();
+        this.modele.newInscription(port,courseList); // envoie la requête au serveur
+        this.modele.register(prenom, nom, email, matricule, cours.getCode());
     }
 
     // Gets the selected semester from the javaFx interface, when the user chooses an item in the list
@@ -71,11 +73,14 @@ public class ClientController {
         }
     }
 
-    public void getCoordonnees(){
-        String nom = this.vue.getNom();
-        String prenom = this.vue.getPrenom();
-        String email = this.vue.getEmail();
-        String matricule = this.vue.getMatricule();
+    public void setCoordonnees(){
+         this.nom = this.vue.getNom();
+         this.prenom = this.vue.getPrenom();
+         this.email = this.vue.getEmail();
+         this.matricule = this.vue.getMatricule();
+    }
 
+    public void setCours(Object item){
+        this.cours = (Course) item;
     }
 }

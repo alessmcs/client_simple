@@ -43,8 +43,10 @@ public class ClientModel {
         this.inscription = new Inscription(port, courseList);
     }
 
-    public void register() throws Exception {
-        inscription.register();
+    public void register(String prenom, String nom, String email, String matricule, String codeCours) throws Exception {
+        inscription.register(prenom, nom, email, matricule, codeCours);
     }
+
+
 
 }
