@@ -47,7 +47,5 @@ public class ClientModel {
         inscription.register();
     }
 
-    public void nom(){
-        this.
-    }
+
 }

@@ -1,6 +1,8 @@
 package mvc;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
@@ -8,6 +10,7 @@ import javafx.geometry.VPos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -15,19 +18,18 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import mvc.models.Course;
+import java.util.*;
 
 
-    public class ClientView extends Application {
+public class ClientView extends Application {
 
         private TableView table = new TableView();
         private Button boutonCharger;
         private Button boutonInscrire;
         private ComboBox<String> liste;
-
-        private  String nom;
-        private String prenom;
-        private String email;
-        private String matricule;
+        private TableColumn<Course, String> codeCol;
+        private TableColumn<Course, String> coursCol;
 
         public static void main(String[] args) {
             launch(args);
@@ -48,10 +50,14 @@ import javafx.stage.Stage;
 
             table.setEditable(true);
 
-            TableColumn codeCol = new TableColumn("Code");
-            TableColumn classCol = new TableColumn("Cours");
+            this.codeCol = new TableColumn("Code");
+            // codeCol.setCellValueFactory(new PropertyValueFactory<>("code"));
 
-            table.getColumns().addAll(classCol, codeCol);
+            this.coursCol = new TableColumn("Cours");
+            // coursCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+            table.getColumns().addAll(coursCol, codeCol);
+
             table.setPrefSize(250, 320);
             this.liste = new ComboBox<>();
             liste.getItems().addAll("Hiver", "Automne", "Été");
@@ -104,20 +110,20 @@ import javafx.stage.Stage;
             formGrid.setPadding(new Insets(20));
 
             Label nomLabel = new Label("Nom");
-            TextField inputNom = new TextField();
-            formGrid.addRow(0, nomLabel, inputNom);
+            TextField nomTextField = new TextField();
+            formGrid.addRow(0, nomLabel, nomTextField);
 
             Label prenomLabel = new Label("Prénom");
-            TextField inputPrenom = new TextField();
-            formGrid.addRow(1, prenomLabel, inputPrenom);
+            TextField prenomTextField = new TextField();
+            formGrid.addRow(1, prenomLabel, prenomTextField);
 
             Label emailLabel = new Label("Email");
-            TextField inputEmail = new TextField();
-            formGrid.addRow(2, emailLabel, inputEmail);
+            TextField emailTextField = new TextField();
+            formGrid.addRow(2, emailLabel, emailTextField);
 
             Label matriculeLabel = new Label("Matricule");
-            TextField inputMatricule = new TextField();
-            formGrid.addRow(3, matriculeLabel, inputMatricule);
+            TextField matriculeField = new TextField();
+            formGrid.addRow(3, matriculeLabel, matriculeField);
 
             this.boutonInscrire = new Button("envoyer");
             formGrid.addRow(5, boutonInscrire);
@@ -151,19 +157,11 @@ import javafx.stage.Stage;
             return liste.getValue();
         }
 
-        public String getInputNom(){
-            return inputNom.getText();
-        }
-
-        public String getInputPrenom(){
-            return InputPrenom().getText();
-        }
-
-        public String getInputEmail(){
-            return InputEmail().getText();
-        }
-
-        public String getInputMatricule(){
-            return inputMatricule.getText();
+        public void updateTable(ArrayList<Course> courseList) { // updates the table based on the arraylist being given from models layer
+            ObservableList<Course> courses = FXCollections.observableArrayList(courseList);
+            codeCol.setCellValueFactory(new PropertyValueFactory<>("code"));
+            coursCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+            // add new data inside the table
+            table.setItems(courses);
         }
     }
